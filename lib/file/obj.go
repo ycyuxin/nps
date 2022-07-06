@@ -91,7 +91,7 @@ func (s *Client) GetConn() bool {
 func (s *Client) HasTunnel(t *Tunnel) (exist bool) {
 	GetDb().JsonDb.Tasks.Range(func(key, value interface{}) bool {
 		v := value.(*Tunnel)
-		if v.Client.Id == s.Id && v.Port == t.Port && t.Port != 0 {
+		if v.Client.Id == s.Id && v.Mode == t.Mode && v.Port == t.Port && t.Port != 0 {
 			exist = true
 			return false
 		}
